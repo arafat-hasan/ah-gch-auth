@@ -72,7 +72,7 @@ func run(logger *slog.Logger) error {
 	cfg.basicAuth.username = env.GetString("BASIC_AUTH_USERNAME", "admin")
 	cfg.basicAuth.hashedPassword = env.GetString("BASIC_AUTH_HASHED_PASSWORD", "$2a$10$jRb2qniNcoCyQM23T59RfeEQUbgdAXfR6S0scynmKfJa5Gj3arGJa")
 	cfg.cookie.secretKey = env.GetString("COOKIE_SECRET_KEY", "2gkqpohkgxb3pdblfnjs66ycu5kp3xdf")
-	cfg.db.dsn = env.GetString("DB_DSN", "user:password@db:5432/db?sslmode=disable")
+	cfg.db.dsn = env.GetString("DB_DSN", "user:password@localhost:5432/db?sslmode=disable")
 	cfg.db.automigrate = env.GetBool("DB_AUTOMIGRATE", true)
 	cfg.jwt.secretKey = env.GetString("JWT_SECRET_KEY", "2s7sysey3whetxqqdypm6fzrmtltaam2")
 	cfg.notifications.email = env.GetString("NOTIFICATIONS_EMAIL", "")
