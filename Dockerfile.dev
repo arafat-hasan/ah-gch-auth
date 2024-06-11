@@ -11,7 +11,7 @@ RUN apt-get update
 RUN apt-get update --fix-missing
 RUN apt-get install -y software-properties-common apt-utils sudo locales
 RUN apt-get update --fix-missing
-RUN apt-get install -y curl ssh net-tools iputils-ping vim git fish
+RUN apt-get install -y curl ssh net-tools iputils-ping vim git fish make
 
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
