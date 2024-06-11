@@ -12,6 +12,7 @@
             "program": "${workspaceFolder}/cmd/api",
             "cwd": "${workspaceFolder}",
             "env": {},
+            // "envFile": "${workspaceFolder}/.env",
             "args": [],
         }
     ]

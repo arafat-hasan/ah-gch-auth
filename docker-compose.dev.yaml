@@ -4,13 +4,21 @@ services:
     image: postgres
     restart: no
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGPORT: ${PGPORT}
+    # volumes:
+    #   - pgdata:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - ${PGPORT}:${PGPORT}
     networks:
       - net
-
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 53s
+      timeout: 5s
+      retries: 10
+ 
   app:
     container_name: ah-gch-auth
     stdin_open: true
@@ -21,7 +29,7 @@ services:
     volumes:
       - $HOME/Share:/home/$USER/Share
     ports:
-      - 4444:4444
+      - ${HTTP_PORT}:${HTTP_PORT}
     depends_on:
       - db
     restart: no
@@ -30,3 +38,6 @@ services:
 
 networks:
   net:
+
+volumes:
+  pgdata:
