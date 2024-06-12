@@ -208,3 +208,4 @@ $RECYCLE.BIN/
 bin/
 tmp/
 build-errors.log
+__debug_bin
